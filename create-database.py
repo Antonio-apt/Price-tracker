@@ -7,7 +7,7 @@ try:
 
     cursor.execute("""
     CREATE TABLE products (
-        id INTENGER NOT NULL PRIMARY KEY,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         link VARCHAR NOT NULL,
         title VARCHAR NOT NULL,
         price DOUBLE NOT NULL,

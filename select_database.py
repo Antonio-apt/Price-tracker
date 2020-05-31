@@ -10,7 +10,7 @@ def show_selected_products():
     try:
         conn = sqlite3.connect('products.db')
         cursor = conn.cursor()
-        cursor.execute("SELECT title, price, email from products")
+        cursor.execute("SELECT * from products")
         data = cursor.fetchall()
     except sqlite3.Error as e:
         logging.error("Database error: %s" % e)
@@ -67,7 +67,7 @@ def clean():
     try:
         conn = sqlite3.connect('products.db')
         cursor = conn.cursor()
-        cursor.execute('DELETE FROM products')
+        cursor.execute('DELETE * FROM products')
     except sqlite3.Error as e:
         logging.error("Database error: %s" % e)
     except Exception as e:
@@ -75,6 +75,22 @@ def clean():
     else:
         conn.commit()
         print('sucessfully cleaned')
+    finally:
+        if conn:
+            conn.close()
+
+def update(product_id, new_price):
+    try:
+        conn = sqlite3.connect('products.db')
+        cursor = conn.cursor()
+        cursor.execute('UPDATE products SET price = ? WHERE id = ?',(new_price, product_id))
+    except sqlite3.Error as e:
+        logging.error("Database error: %s" % e)
+    except Exception as e:
+        logging.error("Exception in _query: %s" % e)
+    else:
+        conn.commit()
+        print('sucessfully updated')
     finally:
         if conn:
             conn.close()

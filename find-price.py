@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 #import threading
 import re
-from checker_price import checker 
 import select_database as sd
 from prettytable import PrettyTable
 import logging
@@ -86,7 +85,7 @@ def search_products_menu():
         try:
             page = requests.get(URL + search, headers=headers)
         except Exception as e:
-            logging.error("Exception in _query: %s" % e)
+            logging.error("Exception: %s" % e)
         
         soup = BeautifulSoup(page.content, 'html.parser')
         print(soup.title)
@@ -116,7 +115,7 @@ def main_menu():
                 tabela = PrettyTable(["Produto", "Preço", "Email"])
                 tabela.padding_width = 1
                 for i in save_products:
-                    tabela.add_row([i[0], i[1], i[2]]) 
+                    tabela.add_row([i[2], i[3], i[4]]) 
                 print(tabela)
                 input("Press Enter to continue...")
             elif(answer == 2):

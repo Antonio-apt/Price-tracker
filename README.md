@@ -15,7 +15,7 @@ Tracker para saber se o preço de algum produto de seu interesse diminuiu. A pes
 
 > pip install -r requirement.txt
 
-> py create-database.py
+> py create_database.py
 
 Crie um .env com as variaveis EMAIL e EMAIL_PASSWORD
 
@@ -27,7 +27,7 @@ A aplicação é dividida em duas partes:
 > py checker_price.py
  - A segunda parte é o menu para gerenciar as ações:
  Em outra instância execute:
- > py find-price.py
+ > py find_price.py
 
 
 _Feito apenas para estudar conceitos do Python_

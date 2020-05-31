@@ -15,6 +15,8 @@ Tracker para saber se o preço de algum produto de seu interesse diminuiu. A pes
 
 > pip install -r requirement.txt
 
+Ou executar 'pip intall' em cada em cada dependência
+
 > py create_database.py
 
 Crie um .env com as variaveis EMAIL e EMAIL_PASSWORD

@@ -19,13 +19,17 @@ def extract_infos(product_cards):
     for div in product_cards:
         indexes = {}
         href = div.get('href')
-        scope = div.find("div",{"class":"Info-bwhjk3-5 gWiKbT ViewUI-sc-1ijittn-6 iXIDWU"})
-        title = scope.find("h2",{"class": re.compile("TitleUI-bwhjk3-15 khKJTM*")}).get_text()
-        price = scope.find("span", {"class": re.compile("PriceUI-bwhjk3-11*")}).get_text()
-        indexes['link'] = href
-        indexes['title'] = title
-        indexes['price'] = price
-        products.append(indexes)
+        try:
+            scope = div.find("div",{"class":"Info-bwhjk3-5 gWiKbT ViewUI-sc-1ijittn-6 iXIDWU"})
+            title = scope.find("h2",{"class": re.compile("TitleUI-bwhjk3-15 khKJTM*")}).get_text()
+            price = scope.find("span", {"class": re.compile("PriceUI-bwhjk3-11*")}).get_text()
+            indexes['link'] = href
+            indexes['title'] = title
+            indexes['price'] = price
+            products.append(indexes)
+        except Exception as e:
+            logging.error("Exception: %s" % e)
+        
     return products
 
 def show_products(product_infos):
@@ -67,14 +71,13 @@ def internal_menu(products):
                             break
                     else:
                         print('Indice invalido')
-                        continue
             return
         if(answer == 2):
             pass
         else:
             print('Resposta invalida')
             input("Press Enter to continue...")
-
+            #recursive internal_menu()
 
 def search_products_menu():
         search = input('O que você deseja encontrar: ')
@@ -86,17 +89,17 @@ def search_products_menu():
             page = requests.get(URL + search, headers=headers)
         except Exception as e:
             logging.error("Exception: %s" % e)
-        
-        soup = BeautifulSoup(page.content, 'html.parser')
-        print(soup.title)
-        titles = soup.findAll("a", {"class": "Link-bwhjk3-2 iDkmyz TouchableA-p6nnfn-0 joVuoc"})
-        if titles:
-            products = extract_infos(titles)
-            show_products(products)
-            return products
         else:
-            print('Houve um erro ao pesquisar')
-            input("Press Enter to continue...")
+            soup = BeautifulSoup(page.content, 'html.parser')
+            print(soup.title)
+            titles = soup.findAll("a", {"class": "Link-bwhjk3-2 iDkmyz TouchableA-p6nnfn-0 joVuoc"})
+            if titles:
+                products = extract_infos(titles)
+                show_products(products)
+                return products
+            else:
+                print('Houve um erro ao pesquisar')
+                input("Press Enter to continue...")
     
 def main_menu():
     while True:
@@ -134,7 +137,6 @@ def main_menu():
             else:
                 print("Valor invalido")
                 input("Press Enter to continue...")
-
 
 main_menu()
 

@@ -22,7 +22,6 @@ def show_selected_products():
         if conn:
             conn.close()
 
-
 def analysis():
     try:
         conn = sqlite3.connect('products.db')
@@ -67,7 +66,7 @@ def clean():
     try:
         conn = sqlite3.connect('products.db')
         cursor = conn.cursor()
-        cursor.execute('DELETE * FROM products')
+        cursor.execute('DELETE FROM products')
     except sqlite3.Error as e:
         logging.error("Database error: %s" % e)
     except Exception as e:

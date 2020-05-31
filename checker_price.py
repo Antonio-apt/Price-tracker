@@ -20,7 +20,6 @@ def float_price(price):
     price = price[2:].replace('.','').replace(',','.')
     return float(price)
 
-
 def send_mail(product, new_price):
     print(os.getenv("EMAIL"))
     server = smtplib.SMTP('64.233.184.108')
@@ -30,7 +29,6 @@ def send_mail(product, new_price):
         server.ehlo()
 
         server.login(os.getenv("EMAIL"), os.getenv("EMAIL_PASSWORD"))
-
 
         subject = "Preço diminuiu!!"
         body = f"""
@@ -53,7 +51,6 @@ def send_mail(product, new_price):
         server.quit()
 
 def checker():
-    
         products = sd.show_selected_products()
         for i in products:
             try:
@@ -75,5 +72,4 @@ def checker():
 
 while True:
     checker()
-    #seconds
-    time.sleep(3600)
+    time.sleep(3600)#seconds

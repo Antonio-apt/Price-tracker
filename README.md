@@ -29,9 +29,12 @@ e ative a opção para conseguir enviar emaild
 
 A aplicação é dividida em duas partes:
  - A primeira parte é o checker price que é o script responsavel por verificar a cada uma hora os valores salvos no banco e enviar os emails:
+    
     $ py checker_price.py
+
  - A segunda parte é o menu para gerenciar as ações:
  Em outra instância execute:
+    
     $ py find_price.py
 
 ---

@@ -33,7 +33,8 @@ def analysis():
     except Exception as e:
         logging.error("Exception in _query: %s" % e)
     else:
-        print(df.describe())
+        print('\nPreços:')
+        print(df['price'].describe())
     finally:
         if conn:
             conn.close()
@@ -61,4 +62,19 @@ def insert(selected_product):
     finally:
         if conn:
             conn.close()
-    
+
+def clean():
+    try:
+        conn = sqlite3.connect('products.db')
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM products')
+    except sqlite3.Error as e:
+        logging.error("Database error: %s" % e)
+    except Exception as e:
+        logging.error("Exception in _query: %s" % e)
+    else:
+        conn.commit()
+        print('sucessfully cleaned')
+    finally:
+        if conn:
+            conn.close()

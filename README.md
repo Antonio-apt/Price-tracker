@@ -18,7 +18,7 @@ Você precisa ter o Python na versão 3 e o PIP
 
     $ pip install -r requirement.txt
 
-Ou executar 'pip intall' em cada em cada dependência
+Ou executar 'pip install' em cada em cada dependência
 
     $ py create_database.py
 

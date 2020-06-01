@@ -25,7 +25,7 @@ Ou executar 'pip intall' em cada em cada dependência
 Crie um .env com as variaveis EMAIL e EMAIL_PASSWORD
 
 Va até [a configuração de segurança do Google](https://myaccount.google.com/u/2/lesssecureapps?pageId=none)
-e ative a opção para conseguir enviar emaild
+e ative a opção para conseguir enviar emails
 
 A aplicação é dividida em duas partes:
  - A primeira parte é o checker price que é o script responsavel por verificar a cada uma hora os valores salvos no banco e enviar os emails:

@@ -1,6 +1,6 @@
 ## Tracker de preços :star:
 
-Tracker para saber se o preço de algum produto de seu interesse diminuiu. A pesquisa dos produtos é feita por um spider que busca no site americanas.com
+Tracker para saber se o preço de algum produto de seu interesse diminuiu. A pesquisa dos produtos é feita por um spider que busca no site americanas.com e extraí os dados diretamente da página
 
 ---
 ### Funcionalidades
@@ -18,7 +18,7 @@ Você precisa ter o Python na versão 3 e o PIP
 
     $ pip install -r requirement.txt
 
-Ou executar 'pip intall' em cada em cada dependência
+Ou executar 'pip install' em cada em cada dependência
 
     $ py create_database.py
 

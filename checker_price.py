@@ -17,7 +17,6 @@ headers = {
 }
 
 def send_mail(product, new_price):
-    print(os.getenv("EMAIL"))
     server = smtplib.SMTP('64.233.184.108')
     try:
         server.ehlo()

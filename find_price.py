@@ -68,7 +68,6 @@ def internal_menu(products):
                         else:
                             print('Email Invalido')
                             input("Press Enter to return...")
-                            break
                     else:
                         print('Indice invalido')
             return

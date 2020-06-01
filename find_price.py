@@ -33,13 +33,13 @@ def extract_infos(product_cards):
     return products
 
 def show_products(product_infos):
-    tabela = PrettyTable(["Indice", "Produto", "Preço"])
-    tabela.padding_width = 1
-    tabela.align["Produto"] = "l"
-    tabela.align["Preço"] = "l"
+    table = PrettyTable(["Indice", "Produto", "Preço"])
+    table.padding_width = 1
+    table.align["Produto"] = "l"
+    table.align["Preço"] = "l"
     for (indice, product) in enumerate(product_infos, start=1):
-        tabela.add_row([indice, product['title'], product['price']])
-    print(tabela)
+        table.add_row([indice, product['title'], product['price']])
+    print(table)
 
 def internal_menu(products):
     menu = PrettyTable()
@@ -81,9 +81,7 @@ def internal_menu(products):
 def search_products_menu():
         search = input('O que você deseja encontrar: ')
         search = search.lower().replace(' ', '-')
-
         print (URL + search)
-
         try:
             page = requests.get(URL + search, headers=headers)
         except Exception as e:
@@ -103,7 +101,7 @@ def search_products_menu():
 def main_menu():
     while True:
         menu = PrettyTable()
-        menu.add_column("Tracker de preços:", ["1. Ver produtos selecionados", "2. Pesquisar novo produto", "3. Voltar ao menu", "3. Dados estatisticos",
+        menu.add_column("Tracker de preços:", ["1. Ver produtos selecionados", "2. Pesquisar novo produto", "3. Dados estatisticos",
                         "4. Limpar produtos", "5. Fechar programa"])
         menu.align["Tracker de preços:"] = "l"
         print(menu)
@@ -114,11 +112,11 @@ def main_menu():
         else:
             if(answer == 1):
                 save_products = sd.show_selected_products()
-                tabela = PrettyTable(["Produto", "Preço", "Email"])
-                tabela.padding_width = 1
+                table = PrettyTable(["Produto", "Preço", "Email"])
+                table.padding_width = 1
                 for i in save_products:
-                    tabela.add_row([i[2], i[3], i[4]]) 
-                print(tabela)
+                    table.add_row([i[2], i[3], i[4]]) 
+                print(table)
                 input("Press Enter to continue...")
             elif(answer == 2):
                 products = search_products_menu()
